@@ -463,9 +463,12 @@ io.on('connection', (socket) => {
 // Serve static files in production
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('*', (req, res) => {
-  // Don't intercept API routes
-  if (req.path.startsWith('/api/') || req.path.startsWith('/socket.io/')) return;
+// Fallback to index.html for SPA routing
+app.use((req, res, next) => {
+  // Don't intercept API routes or socket.io
+  if (req.path.startsWith('/api/') || req.path.startsWith('/socket.io/')) {
+    return next();
+  }
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
