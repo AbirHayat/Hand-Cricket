@@ -623,39 +623,46 @@ export default function MultiplayerGame({ onBack }) {
   if (view === 'game') {
     const isBatter = myRole === 'batter';
     return (
-      <div className="screen game-screen">
-        {/* Scoreboard */}
+      <div className="screen game-screen screen-enter">
+        {/* Scoreboard — clean dark bar with gradient accent */}
+        {/* Scoreboard — clean dark bar with gradient accent */}
         <div className="scoreboard">
-          <div className="score-team">
-            <div className="team-label">{isBatter ? myName : opponentName} (BAT)</div>
-            <div className="score-value">{score}</div>
-            <div className="wickets-value">{wickets}/{totalWickets} wkts</div>
-          </div>
-          <div className="score-divider">
-            <span className="innings-badge">{innings === 1 ? '1st Innings' : '2nd Innings'}</span>
-            {target && <span className="target-badge">Target: {target}</span>}
-            {target && <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Need: {Math.max(0, target - score)}</span>}
-          </div>
-          <div className="score-team">
-            <div className="team-label">Balls</div>
-            <div className="score-value" style={{ fontSize: '1.8rem' }}>{balls}</div>
+          <div className="scoreboard-inner">
+            <div className="score-team">
+              <div className="team-label">{isBatter ? myName : opponentName}</div>
+              <span className="role-badge">🏏 BAT</span>
+            </div>
+            <div className="score-divider">
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.35rem' }}>
+                <span className="score-value">{score}</span>
+                <span className="wickets-value">{wickets}/{totalWickets} wkts</span>
+              </div>
+            </div>
+            <div className="score-team" style={{ alignItems: 'flex-end' }}>
+              <span className="innings-badge">{innings === 1 ? '1st Innings' : '2nd Innings'}</span>
+              {target ? <span className="target-badge">Target: {target}</span> : <span className="team-label">Ball: {balls}</span>}
+              {target && <span style={{ color: 'var(--text-dim)', fontFamily: 'var(--font-headline)', fontSize: '0.65rem', fontWeight: 700 }}>Need: {Math.max(0, target - score)}</span>}
+            </div>
           </div>
         </div>
 
         {/* Timer */}
         {gamePhase === 'playing' && !waitingForOpponent && (
-          <>
+          <div className="timer-section">
+            <div className="timer-labels">
+              <span className="timer-turn-label">Your Turn</span>
+              <span className="timer-text">{timeLeft.toFixed(1)}s</span>
+            </div>
             <div className="timer-bar">
               <div className="timer-fill" style={{ width: `${(timeLeft / 5) * 100}%` }} />
             </div>
-            <span className="timer-text">{timeLeft.toFixed(1)}s</span>
-          </>
+          </div>
         )}
 
         {/* Game Arena */}
         <div className="game-arena">
-          <div className="player-hand">
-            <span className="hand-label">{myName} ({isBatter ? '🏏 BAT' : '🎯 BOWL'})</span>
+          <div className="player-hand player-side">
+            <span className="hand-label">{myName} <span style={{fontSize: '0.6rem', opacity: 0.8}}>({isBatter ? '🏏 BAT' : '🎯 BOWL'})</span></span>
             {!lastResult ? (
               <HandImage value="fist" className={waitingForOpponent ? '' : 'fist'} />
             ) : (
@@ -668,20 +675,24 @@ export default function MultiplayerGame({ onBack }) {
 
           <div className="ball-result">
             {lastResult ? (
-              lastResult.isWicket ? (
-                <span className="run-display wicket-text">OUT! 🔴</span>
-              ) : (
-                <span className={`run-display ${lastResult.runs === 6 ? 'run-six' : lastResult.runs >= 4 ? 'run-four' : ''}`}>
-                  {lastResult.runs === 6 ? '🔥 SIX!' : `+${lastResult.runs}`}
-                </span>
-              )
+              <>
+                {lastResult.isWicket ? (
+                  <span className="run-display wicket-text">OUT! 🔴</span>
+                ) : (
+                  <span className={`run-display ${lastResult.runs === 6 ? 'run-six' : lastResult.runs >= 4 ? 'run-four' : ''}`}>
+                    {lastResult.runs === 6 ? '🔥 SIX!' : `+${lastResult.runs}`}
+                  </span>
+                )}
+              </>
             ) : (
-              <span className="vs-badge">VS</span>
+              <div className="vs-badge-container">
+                <span className="vs-badge">VS</span>
+              </div>
             )}
           </div>
 
-          <div className="player-hand">
-            <span className="hand-label">{opponentName} ({isBatter ? '🎯 BOWL' : '🏏 BAT'})</span>
+          <div className="player-hand ai-side">
+            <span className="hand-label">{opponentName} <span style={{fontSize: '0.6rem', opacity: 0.8}}>({isBatter ? '🎯 BOWL' : '🏏 BAT'})</span></span>
             {!lastResult ? (
               <HandImage value="fist" className={waitingForOpponent ? '' : 'fist'} />
             ) : (
@@ -720,10 +731,10 @@ export default function MultiplayerGame({ onBack }) {
           <div className="innings-overlay">
             <h2 className="title-display title-lg">🔄 Innings Over!</h2>
             <p className="subtitle">First Innings Score:
-              <strong style={{ color: 'var(--accent-green)', fontFamily: 'var(--font-display)', fontSize: '2rem' }}> {score}</strong>
+              <strong style={{ color: 'var(--primary)', fontFamily: 'var(--font-headline)', fontSize: '2rem' }}> {score}</strong>
             </p>
             <p className="subtitle">Target:
-              <strong style={{ color: 'var(--accent-amber)', fontFamily: 'var(--font-display)', fontSize: '2rem' }}> {target}</strong>
+              <strong style={{ color: 'var(--tertiary)', fontFamily: 'var(--font-headline)', fontSize: '2rem' }}> {target}</strong>
             </p>
             <p className="subtitle">
               Starting 2nd innings
@@ -751,7 +762,7 @@ export default function MultiplayerGame({ onBack }) {
   if (view === 'result' && matchResult) {
     const rs = matchResult.roomState;
     return (
-      <div className="screen result-screen">
+      <div className="screen result-screen screen-enter">
         <div className="result-trophy">
           {matchResult.iWon === true ? '🏆' : matchResult.iWon === false ? '😞' : '🤝'}
         </div>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hand Cricket - The Digital Stadium</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#00424e",
+                    "tertiary-fixed": "#ffddb8",
+                    "outline-variant": "#3c4a42",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-high": "#262a37",
+                    "primary-container": "#10b981",
+                    "surface-container-highest": "#313442",
+                    "on-primary": "#003824",
+                    "on-secondary-fixed": "#001f26",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "outline": "#86948a",
+                    "primary": "#4edea3",
+                    "on-background": "#dfe2f3",
+                    "secondary": "#4cd7f6",
+                    "surface-container": "#1b1f2c",
+                    "tertiary": "#ffb95f",
+                    "on-primary-container": "#00422b",
+                    "inverse-primary": "#006c49",
+                    "surface": "#0f131f",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-bright": "#353946",
+                    "tertiary-container": "#e29100",
+                    "on-tertiary-fixed": "#2a1700",
+                    "secondary-container": "#03b5d3",
+                    "surface-dim": "#0f131f",
+                    "background": "#0f131f",
+                    "inverse-on-surface": "#2c303d",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-container-lowest": "#0a0e1a",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "primary-fixed": "#6ffbbe",
+                    "on-tertiary-container": "#523200",
+                    "on-secondary": "#003640",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-tint": "#4edea3",
+                    "surface-container-low": "#171b28",
+                    "secondary-fixed": "#acedff",
+                    "on-error": "#690005",
+                    "on-surface-variant": "#bbcabf",
+                    "on-surface": "#dfe2f3",
+                    "inverse-surface": "#dfe2f3",
+                    "on-primary-fixed": "#002113",
+                    "surface-variant": "#313442",
+                    "on-tertiary": "#472a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 15px rgba(78, 222, 163, 0.2);
+        }
+        .neon-glow-secondary {
+            box-shadow: 0 0 15px rgba(76, 215, 246, 0.2);
+        }
+        .neon-glow-tertiary {
+            box-shadow: 0 0 15px rgba(255, 185, 95, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-background font-body min-h-screen selection:bg-primary/30 overflow-x-hidden">
+<!-- Background Atmospheric Layer -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-surface-container-lowest via-surface-container-low to-surface-container-lowest"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] opacity-20 bg-[radial-gradient(circle,rgba(78,222,163,0.15)_0%,rgba(15,19,31,0)_70%)]"></div>
+</div>
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full flex justify-between items-center px-6 py-4 bg-[#0f131f] dark:bg-slate-950">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center bg-surface-container-high overflow-hidden shadow-lg">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+</div>
+</div>
+<h1 class="font-headline uppercase tracking-[0.05em] text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#4edea3] to-[#10b981] drop-shadow-[0_0_10px_rgba(78,222,163,0.5)]">
+            HAND CRICKET
+        </h1>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden shadow-[0_0_10px_rgba(78,222,163,0.3)]">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="vibrant character avatar for a gaming profile with sleek tech-inspired outfit and neon green highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL6DMBMWSR7BSRSyqoSfCoIOget0E1TNbw73sTMBjSnEHotouU42r3r5YUohUHsq9Kcrbtm_Uf6WrJ4svdE0lx6Ed05XW8IMvCJ4ubg8Pc3SbIX9s0UG8JCNDYL88By4LHIjds47ml9UtojKlTucEql4H0G_WmD_tbyBm5HKb9Zq9caS0fqcWaervSVHZPkymWxcGZltCiSShjxRsCiaGswMK6sbnWHAZilBFrbNfYeORE5787EW2rEPbaApAH2kSH2cieojLbOu1c"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 px-6 pt-8 pb-32 max-w-lg mx-auto">
+<!-- Hero Branding Section -->
+<section class="flex flex-col items-center text-center mb-12">
+<div class="relative mb-6">
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150"></div>
+<div class="relative w-32 h-32 rounded-full glass-panel flex items-center justify-center border border-primary/30 neon-glow-primary active:scale-95 transition-transform duration-150">
+<span class="text-6xl filter drop-shadow-[0_0_8px_rgba(78,222,163,0.8)]">🏏</span>
+</div>
+</div>
+<div class="space-y-2">
+<h2 class="text-4xl md:text-5xl font-black font-headline tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary-container">
+                    HAND CRICKET
+                </h2>
+<p class="text-on-surface-variant font-medium tracking-wide">
+                    The classic schoolyard game — <span class="text-secondary">now online!</span>
+</p>
+</div>
+</section>
+<!-- Game Mode Bento/Stacked Cards -->
+<section class="space-y-4">
+<!-- Single Player Card -->
+<div class="group relative overflow-hidden glass-panel rounded-xl border border-primary/20 p-5 transition-all duration-300 hover:border-primary/50 hover:bg-white/10 active:scale-[0.98]">
+<div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-8xl" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(78,222,163,0.2)]">
+<span class="material-symbols-outlined text-3xl" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="flex-1">
+<h3 class="text-lg font-headline font-bold uppercase tracking-wider text-primary">Single Player</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Challenge AI with 3 difficulty levels</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Multiplayer Card -->
+<div class="group relative overflow-hidden glass-panel rounded-xl border border-secondary/20 p-5 transition-all duration-300 hover:border-secondary/50 hover:bg-white/10 active:scale-[0.98]">
+<div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-8xl" data-icon="public">public</span>
+</div>
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-full bg-secondary/10 border border-secondary/30 flex items-center justify-center text-secondary shadow-[0_0_15px_rgba(76,215,246,0.2)]">
+<span class="material-symbols-outlined text-3xl" data-icon="public" style="font-variation-settings: 'FILL' 1;">public</span>
+</div>
+<div class="flex-1">
+<h3 class="text-lg font-headline font-bold uppercase tracking-wider text-secondary">Multiplayer</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Create or join rooms with friends</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Leaderboard Card -->
+<div class="group relative overflow-hidden glass-panel rounded-xl border border-tertiary/20 p-5 transition-all duration-300 hover:border-tertiary/50 hover:bg-white/10 active:scale-[0.98]">
+<div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-8xl" data-icon="emoji_events">emoji_events</span>
+</div>
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-full bg-tertiary/10 border border-tertiary/30 flex items-center justify-center text-tertiary shadow-[0_0_15px_rgba(255,185,95,0.2)]">
+<span class="material-symbols-outlined text-3xl" data-icon="emoji_events" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+<div class="flex-1">
+<h3 class="text-lg font-headline font-bold uppercase tracking-wider text-tertiary">Leaderboard</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">View top players and stats</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Version Info & Decorative Glow -->
+<footer class="mt-16 flex flex-col items-center gap-4">
+<div class="h-[1px] w-32 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+<p class="text-[10px] font-bold tracking-[0.2em] text-on-surface-variant/50 uppercase">v1.0 • Global Build</p>
+</footer>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#0f131f]/80 backdrop-blur-xl rounded-t-[2rem] border-t border-white/10 shadow-[0_-8px_32px_rgba(76,215,246,0.08)] flex justify-around items-center px-4 pb-6 pt-2">
+<button class="flex flex-col items-center justify-center bg-gradient-to-br from-[#4edea3] to-[#10b981] text-slate-900 rounded-full p-3 shadow-[0_0_15px_rgba(78,222,163,0.4)] active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 p-3 hover:text-emerald-300 transition-colors active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="sports_esports">sports_esports</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 p-3 hover:text-emerald-300 transition-colors active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 p-3 hover:text-emerald-300 transition-colors active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</nav>
+</body></html>

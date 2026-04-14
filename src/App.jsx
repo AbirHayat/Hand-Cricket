@@ -25,12 +25,12 @@ function HandImage({ value, className = '' }) {
 function FingerSelector({ onSelect, disabled, label }) {
   return (
     <div className="finger-controls">
-      <h3>{label || 'Choose your move'}</h3>
+      <h3>🏏 {label || 'Choose your move'}</h3>
       <div className="finger-grid">
         {[1, 2, 3, 4, 5, 6].map(val => (
           <button
             key={val}
-            className="btn btn-secondary finger-btn"
+            className={`finger-btn ${val === 6 ? 'six-btn' : ''}`}
             onClick={() => onSelect(val)}
             disabled={disabled}
           >
@@ -66,35 +66,44 @@ function BallLog({ balls }) {
 // ===== HOME SCREEN =====
 function HomeScreen({ onSelectMode }) {
   return (
-    <div className="screen home-screen">
+    <div className="screen home-screen screen-enter">
       <div className="home-header">
-        <div className="home-logo">🏏</div>
+        <div className="home-logo">
+          <div className="home-logo-inner">🏏</div>
+        </div>
         <h1 className="title-display title-xl">HAND CRICKET</h1>
-        <p className="subtitle">The classic schoolyard game — now online!</p>
+        <p className="subtitle">The classic schoolyard game — <span className="highlight">now online!</span></p>
       </div>
       <div className="home-modes">
-        <div className="glass-card mode-card" onClick={() => onSelectMode('single')}>
+        <div className="glass-card mode-card mode-single" onClick={() => onSelectMode('single')}>
           <div className="mode-icon">🤖</div>
           <div className="mode-info">
             <h3>Single Player</h3>
-            <p>Play against AI with 3 difficulty levels</p>
+            <p>Challenge AI with 3 difficulty levels</p>
           </div>
+          <span className="mode-chevron">›</span>
         </div>
-        <div className="glass-card mode-card" onClick={() => onSelectMode('multiplayer')}>
+        <div className="glass-card mode-card mode-multi" onClick={() => onSelectMode('multiplayer')}>
           <div className="mode-icon">🌐</div>
           <div className="mode-info">
             <h3>Multiplayer</h3>
-            <p>Create or join a room with friends</p>
+            <p>Create or join rooms with friends</p>
           </div>
+          <span className="mode-chevron">›</span>
         </div>
-        <div className="glass-card mode-card" onClick={() => onSelectMode('leaderboard')}>
+        <div className="glass-card mode-card mode-lb" onClick={() => onSelectMode('leaderboard')}>
           <div className="mode-icon">🏆</div>
           <div className="mode-info">
             <h3>Leaderboard</h3>
-            <p>View top players and their stats</p>
+            <p>View top players and stats</p>
           </div>
+          <span className="mode-chevron">›</span>
         </div>
       </div>
+      <footer style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
+        <div className="glow-line" />
+        <span className="version-tag">v1.0 • Global Build</span>
+      </footer>
     </div>
   );
 }
@@ -112,7 +121,7 @@ function AISetupScreen({ onStart, onBack }) {
   ];
 
   return (
-    <div className="screen setup-screen">
+    <div className="screen setup-screen screen-enter">
       <button className="btn btn-secondary nav-back" onClick={onBack}>← Back</button>
       <h2 className="title-display title-lg">Single Player Setup</h2>
       <div className="setup-form glass-card">
@@ -166,7 +175,7 @@ function TossScreen({ gameState, onTossCall, onTossMove, onChoose }) {
   const { tossPhase, tossCall, tossResult, playerName } = gameState;
 
   return (
-    <div className="screen toss-screen">
+    <div className="screen toss-screen screen-enter">
       <h2 className="title-display title-lg">⚡ THE TOSS</h2>
 
       {tossPhase === 'call' && (
@@ -227,7 +236,7 @@ function TossScreen({ gameState, onTossCall, onTossMove, onChoose }) {
 
       {tossPhase === 'choose' && (
         <>
-          <h3 className="title-md" style={{ color: 'var(--accent-green)' }}>You won the toss! Choose wisely:</h3>
+          <h3 className="title-md" style={{ color: 'var(--primary)' }}>You won the toss! Choose wisely:</h3>
           <div className="choice-section">
             <div className="glass-card choice-card" onClick={() => onChoose('bat')}>
               <div className="choice-icon">🏏</div>
@@ -282,39 +291,45 @@ function GameplayScreen({ gameState, onMove }) {
   const isBatter = playerRole === 'batter';
 
   return (
-    <div className="screen game-screen">
-      {/* Scoreboard */}
+    <div className="screen game-screen screen-enter">
+      {/* Scoreboard — gradient-bordered pill */}
       <div className="scoreboard">
-        <div className="score-team">
-          <div className="team-label">{isBatter ? (playerName || 'You') : 'AI'}</div>
-          <div className="score-value">{score}</div>
-          <div className="wickets-value">{wickets}/{totalWickets} wkts</div>
-        </div>
-        <div className="score-divider">
-          <span className="innings-badge">{innings === 1 ? '1st Innings' : '2nd Innings'}</span>
-          {target && <span className="target-badge">Target: {target}</span>}
-          {target && <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Need: {Math.max(0, target - score)}</span>}
-        </div>
-        <div className="score-team">
-          <div className="team-label">Balls</div>
-          <div className="score-value" style={{ fontSize: '1.8rem' }}>{balls}</div>
+        <div className="scoreboard-inner">
+          <div className="score-team">
+            <div className="team-label">{isBatter ? (playerName || 'You') : 'AI'}</div>
+            <span className="role-badge">🏏 BAT</span>
+          </div>
+          <div className="score-divider">
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.35rem' }}>
+              <span className="score-value">{score}</span>
+              <span className="wickets-value">{wickets}/{totalWickets} wkts</span>
+            </div>
+          </div>
+          <div className="score-team" style={{ alignItems: 'flex-end' }}>
+            <span className="innings-badge">{innings === 1 ? '1st Innings' : '2nd Innings'}</span>
+            {target ? <span className="target-badge">Target: {target}</span> : <span className="team-label">Ball: {balls}</span>}
+            {target && <span style={{ color: 'var(--text-dim)', fontFamily: 'var(--font-headline)', fontSize: '0.65rem', fontWeight: 700 }}>Need: {Math.max(0, target - score)}</span>}
+          </div>
         </div>
       </div>
 
       {/* Timer */}
       {!waitingForReveal && (
-        <>
+        <div className="timer-section">
+          <div className="timer-labels">
+            <span className="timer-turn-label">Your Turn</span>
+            <span className="timer-text">{timeLeft.toFixed(1)}s</span>
+          </div>
           <div className="timer-bar">
             <div className="timer-fill" style={{ width: `${(timeLeft / 5) * 100}%` }} />
           </div>
-          <span className="timer-text">{timeLeft.toFixed(1)}s</span>
-        </>
+        </div>
       )}
 
       {/* Game Arena */}
       <div className="game-arena">
-        <div className="player-hand">
-          <span className="hand-label">{playerName || 'You'} ({isBatter ? '🏏 BAT' : '🎯 BOWL'})</span>
+        <div className="player-hand player-side">
+          <span className="hand-label">{playerName || 'You'} <span style={{fontSize: '0.6rem', opacity: 0.8}}>({isBatter ? '🏏 BAT' : '🎯 BOWL'})</span></span>
           {!lastResult ? (
             <HandImage value="fist" className="fist" />
           ) : (
@@ -337,12 +352,14 @@ function GameplayScreen({ gameState, onMove }) {
               )}
             </>
           ) : (
-            <span className="vs-badge">VS</span>
+            <div className="vs-badge-container">
+              <span className="vs-badge">VS</span>
+            </div>
           )}
         </div>
 
-        <div className="player-hand">
-          <span className="hand-label">AI ({isBatter ? '🎯 BOWL' : '🏏 BAT'})</span>
+        <div className="player-hand ai-side">
+          <span className="hand-label">AI <span style={{fontSize: '0.6rem', opacity: 0.8}}>({isBatter ? '🎯 BOWL' : '🏏 BAT'})</span></span>
           {!lastResult ? (
             <HandImage value="fist" className="fist" />
           ) : (
@@ -358,7 +375,7 @@ function GameplayScreen({ gameState, onMove }) {
       {!waitingForReveal && (
         <FingerSelector
           onSelect={onMove}
-          label={isBatter ? '🏏 Pick your runs!' : '🎯 Bowl!'}
+          label={isBatter ? 'Pick your runs!' : 'Bowl!'}
         />
       )}
 
@@ -382,12 +399,12 @@ function InningsTransition({ score, target, onContinue, isSuperOver, message }) 
       {isSuperOver ? (
         <>
           <div style={{ fontSize: '4rem' }}>⚡</div>
-          <h2 className="title-display title-lg" style={{ color: 'var(--accent-amber)' }}>
+          <h2 className="title-display title-lg" style={{ color: 'var(--tertiary)' }}>
             SUPER OVER!
           </h2>
           <div className="super-over-badge">⚡ 1 Wicket · Winner Takes All</div>
           <p className="subtitle">{message || 'Match tied! Time for a Super Over!'}</p>
-          <p className="subtitle">Both teams scored: <strong style={{ color: 'var(--accent-green)', fontFamily: 'var(--font-display)', fontSize: '2rem' }}>{score}</strong></p>
+          <p className="subtitle">Both teams scored: <strong style={{ color: 'var(--primary)', fontFamily: 'var(--font-headline)', fontSize: '2rem' }}>{score}</strong></p>
           <button className="btn btn-amber btn-large" onClick={onContinue}>
             ⚡ Start Super Over
           </button>
@@ -395,8 +412,8 @@ function InningsTransition({ score, target, onContinue, isSuperOver, message }) 
       ) : (
         <>
           <h2 className="title-display title-lg">🔄 Innings Over!</h2>
-          <p className="subtitle">First Innings Score: <strong style={{ color: 'var(--accent-green)', fontFamily: 'var(--font-display)', fontSize: '2rem' }}>{score}</strong></p>
-          <p className="subtitle">Target: <strong style={{ color: 'var(--accent-amber)', fontFamily: 'var(--font-display)', fontSize: '2rem' }}>{target}</strong></p>
+          <p className="subtitle">First Innings Score: <strong style={{ color: 'var(--primary)', fontFamily: 'var(--font-headline)', fontSize: '2rem' }}>{score}</strong></p>
+          <p className="subtitle">Target: <strong style={{ color: 'var(--tertiary)', fontFamily: 'var(--font-headline)', fontSize: '2rem' }}>{target}</strong></p>
           <button className="btn btn-primary btn-large" onClick={onContinue}>
             Start 2nd Innings →
           </button>
@@ -416,7 +433,7 @@ function ResultScreen({ result, onPlayAgain, onHome }) {
   const aiWkts = playerBattedFirst ? innings2.wickets : innings1.wickets;
 
   return (
-    <div className="screen result-screen">
+    <div className="screen result-screen screen-enter">
       <div className="result-trophy">
         {playerWon === true ? '🏆' : playerWon === false ? '😞' : '🤝'}
       </div>

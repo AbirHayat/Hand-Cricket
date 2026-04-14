@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VICTORY | Hand Cricket</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#86948a",
+                      "on-error-container": "#ffdad6",
+                      "on-error": "#690005",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#0a0e1a",
+                      "on-tertiary-fixed": "#2a1700",
+                      "on-secondary-fixed": "#001f26",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "secondary": "#4cd7f6",
+                      "outline-variant": "#3c4a42",
+                      "surface-bright": "#353946",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "on-primary-fixed-variant": "#005236",
+                      "surface-container": "#1b1f2c",
+                      "on-primary-fixed": "#002113",
+                      "primary-fixed-dim": "#4edea3",
+                      "surface-tint": "#4edea3",
+                      "on-tertiary-container": "#523200",
+                      "on-surface": "#dfe2f3",
+                      "on-background": "#dfe2f3",
+                      "surface-dim": "#0f131f",
+                      "primary-fixed": "#6ffbbe",
+                      "on-tertiary": "#472a00",
+                      "primary-container": "#10b981",
+                      "on-surface-variant": "#bbcabf",
+                      "surface-variant": "#313442",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-secondary-container": "#00424e",
+                      "secondary-fixed": "#acedff",
+                      "on-primary": "#003824",
+                      "surface-container-highest": "#313442",
+                      "surface-container-high": "#262a37",
+                      "on-primary-container": "#00422b",
+                      "tertiary": "#ffb95f",
+                      "primary": "#4edea3",
+                      "inverse-on-surface": "#2c303d",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "tertiary-container": "#e29100",
+                      "secondary-container": "#03b5d3",
+                      "on-secondary": "#003640",
+                      "inverse-surface": "#dfe2f3",
+                      "background": "#0f131f",
+                      "inverse-primary": "#006c49",
+                      "surface-container-low": "#171b28",
+                      "surface": "#0f131f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Manrope"],
+                      "label": ["Manrope"]
+              }
+            },
+          },
+        }
+      </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.radial-burst {
+    background: radial-gradient(circle at center, rgba(78, 222, 163, 0.15) 0%, rgba(15, 19, 31, 0) 70%)
+    }
+.neon-glow-primary {
+    text-shadow: 0 0 20px rgba(78, 222, 163, 0.6)
+    }
+.confetti-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAia5ITJr8P7Hhw8Un0WEtyEtHQ_16xCHPT3XAKaVGblj9jZCMzWMpfmt6At_zeZrqHAj7RV0ybDBVX96kdXNz6Iado8VDIOLotnO20ummNlm844dA9vLP4GBWgwueTfVunGguGe5PedpQOf9O7T5E9nw0AjW8Bcvow4LT61I7EDWyFO9uL3e-Z6Q-oUnbVEGzwXYo_zUHHJQWXYgUYr_fKwoIJPr6eVDDbO2QDGyKIaweFXpgNlpxcOulwhXcxCIQYSV2tSQ0uYLYs);
+    opacity: 0.3
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 1px solid rgba(255, 255, 255, 0.08)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body overflow-hidden selection:bg-primary/30 min-h-screen flex flex-col items-center justify-between">
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center px-6 py-4 w-full top-0 bg-transparent shadow-[0_0_15px_rgba(78,222,163,0.1)] z-50">
+<button class="flex items-center justify-center p-2 rounded-full text-slate-400 hover:text-emerald-300 transition-colors active:duration-150 active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="font-['Space_Grotesk'] uppercase tracking-[0.05em] text-xl font-bold text-emerald-400">
+            VICTORY
+        </div>
+<button class="flex items-center justify-center p-2 rounded-full text-slate-400 hover:text-emerald-300 transition-colors active:duration-150 active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<!-- Main Content Area (Focused Journey) -->
+<main class="relative w-full flex-1 flex flex-col items-center justify-center px-4">
+<!-- Visual Atmosphere -->
+<div class="absolute inset-0 radial-burst pointer-events-none"></div>
+<div class="absolute inset-0 confetti-overlay pointer-events-none"></div>
+<!-- Trophy & Confetti -->
+<div class="relative mb-8 group">
+<div class="absolute inset-0 bg-tertiary blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
+<div class="text-8xl drop-shadow-[0_0_35px_rgba(255,185,95,0.8)] relative z-10 scale-110">
+                🏆
+            </div>
+<!-- Decorative particles/shapes -->
+<div class="absolute -top-4 -left-4 w-3 h-3 bg-primary rounded-full blur-[2px]"></div>
+<div class="absolute -bottom-2 -right-6 w-2 h-2 bg-secondary rounded-full blur-[1px]"></div>
+<div class="absolute top-10 -right-8 w-4 h-4 border border-tertiary rotate-45 opacity-50"></div>
+</div>
+<!-- Victory Headlines -->
+<div class="text-center mb-12">
+<h1 class="font-headline text-7xl md:text-8xl font-black text-primary neon-glow-primary uppercase tracking-tighter leading-none mb-4">
+                YOU WIN!
+            </h1>
+<p class="font-body text-secondary text-lg md:text-xl font-medium tracking-wide">
+                Won by <span class="text-tertiary">23 runs</span>
+</p>
+</div>
+<!-- Scoreboard Bento -->
+<div class="w-full max-w-2xl grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-6 px-4">
+<!-- Player Card -->
+<div class="glass-card rounded-full p-8 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+<span class="font-label text-xs tracking-widest text-slate-400 uppercase mb-2">Player</span>
+<div class="font-headline text-6xl font-bold text-primary neon-glow-primary">47</div>
+<span class="font-body text-slate-400 text-sm">(3 wickets)</span>
+</div>
+<!-- VS Badge -->
+<div class="flex items-center justify-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-white/10 flex items-center justify-center font-headline font-bold text-slate-500 shadow-xl">
+                    VS
+                </div>
+</div>
+<!-- AI Card -->
+<div class="glass-card rounded-full p-8 flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+<span class="font-label text-xs tracking-widest text-slate-400 uppercase mb-2">AI Opponent</span>
+<div class="font-headline text-6xl font-bold text-secondary shadow-[0_0_20px_rgba(76,215,246,0.3)]">24</div>
+<span class="font-body text-slate-400 text-sm">(3 wickets)</span>
+</div>
+</div>
+<!-- Match Stats Highlights (Mini Bento) -->
+<div class="mt-10 grid grid-cols-3 gap-4 w-full max-w-lg">
+<div class="bg-surface-container-low rounded-xl p-3 flex flex-col items-center">
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-label">Best Over</span>
+<span class="text-primary font-bold text-lg">18</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-3 flex flex-col items-center border border-primary/20 shadow-[0_0_15px_rgba(78,222,163,0.05)]">
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-label">Strike Rate</span>
+<span class="text-white font-bold text-lg">156.6</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-3 flex flex-col items-center">
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-label">6s Hit</span>
+<span class="text-secondary font-bold text-lg">4</span>
+</div>
+</div>
+</main>
+<!-- Bottom Actions Container -->
+<footer class="w-full max-w-lg px-8 pb-12 pt-6 flex flex-col gap-4">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary-container font-headline font-bold uppercase tracking-widest py-5 rounded-full flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(78,222,163,0.3)] hover:shadow-[0_0_30px_rgba(78,222,163,0.5)] active:scale-95 transition-all">
+<span class="material-symbols-outlined">refresh</span>
+            PLAY AGAIN
+        </button>
+<button class="w-full bg-transparent border border-white/10 hover:bg-white/5 text-on-surface font-headline font-bold uppercase tracking-widest py-5 rounded-full flex items-center justify-center gap-3 active:scale-95 transition-all">
+<span class="material-symbols-outlined">home</span>
+            HOME
+        </button>
+</footer>
+<!-- Bottom Navigation Shell (Suppressed due to transactional/focused journey rules, 
+         but template structure included if needed for other states) -->
+<nav class="hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#0f131f]/80 backdrop-blur-xl rounded-t-3xl border-t border-white/10 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-slate-500 hover:bg-white/5 transition-all active:scale-90 px-4 py-1">
+<span class="material-symbols-outlined">sports_cricket</span>
+<span class="font-['Manrope'] font-medium text-[10px] uppercase tracking-wider">PLAY</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 hover:bg-white/5 transition-all active:scale-90 px-4 py-1">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-['Manrope'] font-medium text-[10px] uppercase tracking-wider">LEADERBOARD</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 hover:bg-white/5 transition-all active:scale-90 px-4 py-1">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-['Manrope'] font-medium text-[10px] uppercase tracking-wider">SHOP</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 hover:bg-white/5 transition-all active:scale-90 px-4 py-1">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Manrope'] font-medium text-[10px] uppercase tracking-wider">PROFILE</span>
+</div>
+</nav>
+<!-- Atmospheric Glow Background Elements -->
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+</body></html>
