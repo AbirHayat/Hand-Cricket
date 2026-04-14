@@ -91,13 +91,14 @@ io.on('connection', (socket) => {
 
       if (!playerWon) {
         const aiChoice = game.ai.chooseBatOrBowl();
-        game.playerRole = aiChoice === 'bat' ? 'bowler' : 'batter';
+        // Always store as 'bat' or 'bowl' to match ai-play-move handler
+        game.playerRole = aiChoice === 'bat' ? 'bowl' : 'bat';
         game.state = 'FIRST_INNINGS';
         game.engine.matchState = 'FIRST_INNINGS';
         setTimeout(() => {
           socket.emit('ai-bat-bowl-chosen', {
             aiChoice,
-            playerRole: game.playerRole,
+            playerRole: game.playerRole === 'bat' ? 'batter' : 'bowler',
           });
         }, 1500);
       }
@@ -335,6 +336,10 @@ io.on('connection', (socket) => {
     const roomId = playerRooms.get(socket.id);
     const room = rooms.get(roomId);
     if (!room || room.hostId !== socket.id) return;
+    // Auto-shuffle teams if not already done
+    if (room.teams.A.length === 0 && room.teams.B.length === 0) {
+      room.shuffleTeams();
+    }
     room.startToss();
     io.to(roomId).emit('toss-started', room.getState());
   });

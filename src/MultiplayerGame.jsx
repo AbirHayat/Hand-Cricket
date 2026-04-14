@@ -287,12 +287,13 @@ export default function MultiplayerGame({ onBack }) {
       setInnings2Data({ score, wickets, balls, ballLog: [...ballLog] });
 
       // Determine if I won
-      const amBattingFirst = roomState?.battingTeam && roomState.teams?.[roomState.battingTeam]?.includes(myId);
+      // After switchInnings(), roomState.battingTeam = the CHASING team (2nd innings batter)
+      const amInChasingTeam = roomState?.battingTeam && roomState.teams?.[roomState.battingTeam]?.includes(myId);
       let iWon = false;
       if (result.winner === 'chaser') {
-        iWon = !amBattingFirst;
+        iWon = amInChasingTeam; // chaser won → I win if I'm in the chasing team
       } else if (result.winner === 'first') {
-        iWon = amBattingFirst;
+        iWon = !amInChasingTeam; // first batting team won → I win if I'm NOT in the chasing team
       }
 
       setMatchResult({

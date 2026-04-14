@@ -3,7 +3,7 @@ import fistImg from '/assets/hands/fist.png';
 import hand1Img from '/assets/hands/hand_1.png';
 import hand2Img from '/assets/hands/hand_2.png';
 import hand3Img from '/assets/hands/hand_3.png';
-import hand4Img from '/assets/hands/hand_4.png';
+// hand_4.png removed — AI-generated image showed wrong finger count
 
 // Hand image/emoji map
 export const HAND_IMAGES = {
@@ -11,7 +11,7 @@ export const HAND_IMAGES = {
   1: hand1Img,
   2: hand2Img,
   3: hand3Img,
-  4: hand4Img,
+  4: null, // fallback to emoji (image was inaccurate)
   5: null, // fallback to emoji
   6: null, // fallback to emoji
 };

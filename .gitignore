@@ -24,6 +24,9 @@ dist-ssr
 *.sw?
 
 # Database and Assets
+data/*.db
+data/*.db-shm
+data/*.db-wal
 db/*.sqlite
 db/*.sqlite3
 *.webp
